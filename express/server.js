@@ -5,6 +5,7 @@ const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 const Pusher = require("pusher");
+const { v4: uuidv4 } = require('uuid');
 const cors = require("cors");
 const {
   APP_ID,
@@ -38,7 +39,10 @@ router.post("/pusher/auth", function(req, res) {
 
 router.post('/pusher/send', (req, res) => {
   const {message, channel} = req.body;
-  pusher.trigger(channel, 'message', {message});
+  pusher.trigger(channel, 'message', {
+    message,
+    id: uuidv4()
+  });
   res.sendStatus(200)
 });
 
@@ -47,7 +51,6 @@ router.post('/', (req, res) => res.json({ postBody: req.body }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'development') {
   app.use('/', router)
 } else {

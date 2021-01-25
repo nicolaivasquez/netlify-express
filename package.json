@@ -23,7 +23,8 @@
   "homepage": "https://github.com/neverendingqs/netlify-express#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "pusher": "^4.0.2"
+    "pusher": "^4.0.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
