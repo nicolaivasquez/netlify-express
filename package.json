@@ -23,6 +23,7 @@
   "homepage": "https://github.com/neverendingqs/netlify-express#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "encoding": "^0.1.13",
     "pusher": "^4.0.2",
     "uuid": "^8.3.2"
   },
