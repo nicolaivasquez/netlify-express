@@ -22,6 +22,8 @@ const pusher = new Pusher({
   useTLS: true
 });
 
+app.use(cors());
+
 const router = express.Router();
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -51,7 +53,6 @@ router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
 if (process.env.NODE_ENV === 'development') {
   app.use('/', router)
 } else {
