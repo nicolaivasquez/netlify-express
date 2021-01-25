@@ -41,7 +41,8 @@ router.post('/pusher/send', (req, res) => {
   const {message, channel} = req.body;
   pusher.trigger(channel, 'message', {
     message,
-    id: uuidv4()
+    id: uuidv4(),
+    createdAt: (new Date()).toISOString()
   });
   res.sendStatus(200)
 });
